@@ -34,7 +34,7 @@ def generate_launch_description():
         DeclareLaunchArgument("laser_z", default_value="0.0"),
         DeclareLaunchArgument("laser_roll", default_value="0.0"),
         DeclareLaunchArgument("laser_pitch", default_value="0.0"),
-        DeclareLaunchArgument("laser_yaw", default_value="3.141592653"),
+        DeclareLaunchArgument("laser_yaw", default_value="0.0"),
         DeclareLaunchArgument(
             "bno055_params",
             default_value=PathJoinSubstitution([
