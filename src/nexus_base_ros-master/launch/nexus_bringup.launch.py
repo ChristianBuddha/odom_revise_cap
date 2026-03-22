@@ -63,14 +63,14 @@ def generate_launch_description():
                 "bno055_params_i2c.yaml",
             ]),
         ),
-        DeclareLaunchArgument(
-            "mpu6050_params",
-            default_value=PathJoinSubstitution([
-                FindPackageShare("ros2_mpu6050"),
-                "config",
-                "params.yaml",
-            ]),
-        ),
+        # DeclareLaunchArgument(
+        #     "mpu6050_params",
+        #     default_value=PathJoinSubstitution([
+        #         FindPackageShare("ros2_mpu6050"),
+        #         "config",
+        #         "params.yaml",
+        #     ]),
+        # ),
 
         # Node(
             # package="nexus_base_ros",
@@ -168,21 +168,21 @@ def generate_launch_description():
             output="screen",
         ),
 
-        Node(
-            package="ros2_mpu6050",
-            executable="ros2_mpu6050",
-            name="mpu6050_sensor",
-            namespace=LaunchConfiguration("robot_ns"),
-            condition=IfCondition(
-                PythonExpression(["'", LaunchConfiguration("imu_driver"), "' == 'mpu6050'"])
-            ),
-            parameters=[
-                LaunchConfiguration("mpu6050_params"),
-                {"frame_id": LaunchConfiguration("imu_frame")},
-            ],
-            remappings=[("imu/mpu6050", "bno055/imu")],
-            output="screen",
-        ),
+        # Node(
+        #     package="ros2_mpu6050",
+        #     executable="ros2_mpu6050",
+        #     name="mpu6050_sensor",
+        #     namespace=LaunchConfiguration("robot_ns"),
+        #     condition=IfCondition(
+        #         PythonExpression(["'", LaunchConfiguration("imu_driver"), "' == 'mpu6050'"])
+        #     ),
+        #     parameters=[
+        #         LaunchConfiguration("mpu6050_params"),
+        #         {"frame_id": LaunchConfiguration("imu_frame")},
+        #     ],
+        #     remappings=[("imu/mpu6050", "bno055/imu")],
+        #     output="screen",
+        # ),
 
         Node(
             package="tf2_ros",
